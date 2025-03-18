@@ -1,26 +1,71 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Menu from "./components/Menu/menu";
+import MenuItem from "./components/Menu/menuItem";
+import SubMenu from "./components/Menu/subMenu";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import Button from "./components/Button/button";
+import Transition from "./components/Transition/transition";
+library.add(fas);
 
-function App() {
+const App: React.FC = () => {
+  const [show, setShow] = useState(false);
+  const nodeRef = React.useRef(null);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Menu
+          defaultIndex={"0"}
+          onSelect={(index) => {
+            alert(index);
+          }}
+          mode="horizontal"
+          defaultOpenSubMenus={["2"]}
         >
-          Learn React
-        </a>
+          <MenuItem>cool link</MenuItem>
+          <MenuItem>cool link2</MenuItem>
+          <SubMenu title="dropdown">
+            <MenuItem>dropdown1</MenuItem>
+            <MenuItem>dropdown2</MenuItem>
+            <MenuItem>dropdown3 </MenuItem>
+          </SubMenu>
+          <MenuItem>cool link3</MenuItem>
+        </Menu>
+        <Button
+          size="lg"
+          onClick={() => {
+            setShow(!show);
+          }}
+        >
+          Toggle
+        </Button>
+        <Transition
+          in={show}
+          timeout={300}
+          animation="zoom-in-left"
+          nodeRef={nodeRef}
+        >
+          <div>
+            <p>
+              Edit <code>src/App.tsx</code>and save to reload.
+            </p>
+            <p>
+              Edit <code>src/App.tsx</code>and save to reload.
+            </p>
+            <p>
+              Edit <code>src/App.tsx</code>and save to reload.
+            </p>
+            <p>
+              Edit <code>src/App.tsx</code>and save to reload.
+            </p>
+            <p>
+              Edit <code>src/App.tsx</code>and save to reload.
+            </p>
+          </div>
+        </Transition>
       </header>
     </div>
   );
-}
+};
 
 export default App;
