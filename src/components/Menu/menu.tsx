@@ -29,7 +29,7 @@ interface IMenuContext {
 
 export const MenuContext = createContext<IMenuContext>({ index: "0" });
 
-const Menu: React.FC<PropsWithChildren<MenuProps>> = (props) => {
+export const Menu: React.FC<PropsWithChildren<MenuProps>> = (props) => {
   const {
     className,
     mode = "horizontal",

@@ -1,4 +1,3 @@
-import { PropsWithChildren } from "react";
 import { CSSTransitionProps } from "react-transition-group/CSSTransition";
 import CSSTransition from "react-transition-group/CSSTransition";
 type AnimationName =
@@ -9,13 +8,16 @@ type AnimationName =
 
 type TransitionProps = CSSTransitionProps & {
   animation?: AnimationName;
-  children: React.ReactNode;
+  wrapper?: boolean;
+  children?: React.ReactNode;
 };
+
 const Transition: React.FC<TransitionProps> = (props) => {
   const {
     children,
     classNames,
     animation,
+    wrapper,
     unmountOnExit = true,
     appear = true,
     ...restProps
@@ -25,7 +27,7 @@ const Transition: React.FC<TransitionProps> = (props) => {
       classNames={classNames ? classNames : animation}
       {...restProps}
     >
-      {children}
+      {wrapper ? <div>{children}</div> : children}
     </CSSTransition>
   );
 };

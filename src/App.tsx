@@ -15,11 +15,10 @@ const App: React.FC = () => {
     <div className="App">
       <header className="App-header">
         <Menu
-          defaultIndex={"0"}
+          defaultIndex="0"
           onSelect={(index) => {
             alert(index);
           }}
-          mode="horizontal"
           defaultOpenSubMenus={["2"]}
         >
           <MenuItem>cool link</MenuItem>
@@ -35,14 +34,15 @@ const App: React.FC = () => {
           size="lg"
           onClick={() => {
             setShow(!show);
+            alert(show);
           }}
         >
           Toggle
         </Button>
         <Transition
+          animation="zoom-in-bottom"
           in={show}
           timeout={300}
-          animation="zoom-in-left"
           nodeRef={nodeRef}
         >
           <div>
