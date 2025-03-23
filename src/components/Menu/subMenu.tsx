@@ -91,14 +91,22 @@ export const SubMenu: React.FC<SubMenuProps> = ({
       }
     });
     return (
-      <Transition
+      // <Transition
+      //   in={menuOpen}
+      //   timeout={300}
+      //   animation="zoom-in-bottom"
+      //   nodeRef={nodeRef}
+      // >
+      //   <ul className={subMenuClasses}>{childrenComponent}</ul>
+      // </Transition>
+      <CSSTransition
         in={menuOpen}
         timeout={300}
-        animation="zoom-in-left"
+        classNames="zoom-in-bottom
         nodeRef={nodeRef}
       >
-        <ul className={subMenuClasses}>{childrenComponent}</ul>
-      </Transition>
+        <ul ref={nodeRef} className={subMenuClasses}>{childrenComponent}</ul>
+      </CSSTransition>
     );
   };
 
