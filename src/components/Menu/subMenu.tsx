@@ -8,8 +8,8 @@ import React, {
 } from "react";
 import { MenuContext } from "./menu";
 import { MenuItemProps } from "./menuItem";
-import Icon from "../Icon/Icon";
-import { Transition } from "react-transition-group";
+import Icon from "../Icon/icon";
+import CSSTransition from "react-transition-group/CSSTransition";
 
 export interface SubMenuProps {
   index?: string;
@@ -91,14 +91,24 @@ export const SubMenu: React.FC<SubMenuProps> = ({
       }
     });
     return (
-      <Transition
+      // <Transition
+      //   in={menuOpen}
+      //   timeout={300}
+      //   animation="zoom-in-left"
+      //   nodeRef={nodeRef}
+      // >
+      //   <ul className={subMenuClasses}>{childrenComponent}</ul>
+      // </Transition>
+      <CSSTransition
         in={menuOpen}
         timeout={300}
-        animation="zoom-in-left"
+        classNames="zoom-in-top"
         nodeRef={nodeRef}
       >
-        <ul className={subMenuClasses}>{childrenComponent}</ul>
-      </Transition>
+        <ul ref={nodeRef} className={subMenuClasses}>
+          {childrenComponent}
+        </ul>
+      </CSSTransition>
     );
   };
 

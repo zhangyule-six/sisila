@@ -9,8 +9,9 @@ import {
   useRef,
   RefObject,
 } from "react";
+import React from "react";
 import { Input, InputProps } from "../Input/input";
-import Icon from "../Icon/Icon";
+import Icon from "../Icon/icon";
 import useDebounce from "../../hooks/useDebounce";
 import classNames from "classnames";
 import useClickOutside from "../../hooks/useClickOutside";
